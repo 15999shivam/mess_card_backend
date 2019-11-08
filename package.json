@@ -1,0 +1,27 @@
+{
+  "name": "mess_card_backend",
+  "version": "1.0.0",
+  "description": "This is Backend for mess card flutter application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/15999shivam/mess_card_backend.git"
+  },
+  "keywords": [
+    "Flutter",
+    "Node"
+  ],
+  "author": "Shivam,Nishant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/15999shivam/mess_card_backend/issues"
+  },
+  "homepage": "https://github.com/15999shivam/mess_card_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.8"
+  }
+}
