@@ -6,6 +6,7 @@ const router = express.Router();
 //Register a User
 router.post("/user/register", async (req, res) => {
   // console.log("imcoming req");
+  // console.log(req.body);
   try {
     let user = await User.findOne({
       username: req.body.username
@@ -33,7 +34,7 @@ router.post("/user/register", async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).send({ e });
+    res.status(400).send({ error: 4 });
   }
 });
 

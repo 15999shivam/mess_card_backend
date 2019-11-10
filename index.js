@@ -6,7 +6,7 @@ const User = require("./routes/User");
 app.use(express.json());
 app.use(User);
 app.get("/", (req, res) => {
-  console.log("incoming req");
+  // console.log("incoming req");
   res.send("Hello World");
 });
 

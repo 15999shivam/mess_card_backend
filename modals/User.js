@@ -26,6 +26,14 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  roomno: {
+    type: String,
+    required: true
+  },
+  hostelname: {
+    type: String,
+    required: true
+  },
   messcard: Array,
   tokens: [
     {
