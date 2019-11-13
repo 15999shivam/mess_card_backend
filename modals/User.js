@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema({
   },
   isactive: {
     type: Boolean,
-    default: false
+    default: true //make it false for production
   },
   roomno: {
     type: String,
