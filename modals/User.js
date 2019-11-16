@@ -34,7 +34,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  messcard: Array,
+  messcard: Array, //[[{ type: Boolean, default: false }]],
   tokens: [
     {
       token: {
@@ -80,8 +80,9 @@ UserSchema.methods.toJSON = function() {
 };
 
 UserSchema.pre("save", async function(next) {
+  console.log("i am saving the user");
   const user = this;
-
+  console.log(user.messcard);
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 8);
   }

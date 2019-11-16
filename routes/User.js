@@ -62,7 +62,25 @@ router.get("/user/me", auth, (req, res) => {
 
 //check weather token is valid or not
 router.get("/user/auth", auth, (req, res) => {
-  res.status(200).send({ sucess: 1 });
+  res.status(200).send({ sucess: 1, data: req.user.messcard });
+});
+
+router.post("/user/checkbox", auth, async (req, res) => {
+  console.log(req.body.day);
+  let myarray = new Array(31);
+  for (i = 0; i < 31; i++) {
+    myarray[i] = new Array(5);
+    for (let j = 0; j < 5; j++) {
+      if (i === req.body.day - 1 && j === req.body.meal) {
+        myarray[i][j] = true;
+      } else myarray[i][j] = req.user.messcard[i][j];
+    }
+  }
+  req.user["messcard"] = myarray;
+  var status = await req.user.save();
+  console.log(req.user["messcard"]);
+  // console.log(req.user.messcard);
+  res.send({ sucess: 1 });
 });
 
 module.exports = router;

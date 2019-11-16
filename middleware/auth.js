@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
 const User = require("../modals/User");
 const auth = async (req, res, next) => {
+  // console.log(req.body);
   console.log(req.header("Authorization"));
   try {
-    let token = req.header("Authorization").replace('Bearer "', "");
-    token = token.substring(0, token.length - 1);
+    let token = req.header("Authorization").replace("Bearer ", "");
+
     const decoded = jwt.verify(token, "messcard");
     const user = await User.findOne({
       _id: decoded._id,
