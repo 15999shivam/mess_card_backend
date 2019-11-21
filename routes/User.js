@@ -62,7 +62,21 @@ router.get("/user/me", auth, (req, res) => {
 
 //check weather token is valid or not
 router.get("/user/auth", auth, (req, res) => {
-  res.status(200).send({ sucess: 1, data: req.user.messcard });
+  console.log("req on auth route");
+  let today = new Date();
+  let dd = String(today.getDate());
+  console.log(dd);
+  res.status(200).send({ sucess: 1, day: dd, data: req.user.messcard });
+});
+
+//check weather token is valid or not and
+router.get("/user/authLocal", auth, (req, res) => {
+  console.log("request on authLocal route");
+  let today = new Date();
+  let dd = today.getDate();
+  console.log(dd);
+  // console.log(req.user.messcard[dd]);
+  res.status(200).send({ sucess: 1, day: dd, data: req.user.messcard[dd - 1] });
 });
 
 router.post("/user/checkbox", auth, async (req, res) => {
