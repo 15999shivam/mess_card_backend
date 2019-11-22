@@ -43,7 +43,7 @@ router.post("/user/login", async (req, res) => {
   //TODO: prevent inactive users from logginng in
   try {
     const user = await User.findByCredentials(
-      req.body.email,
+      req.body.username,
       req.body.password
     );
     const token = await user.generateAuthToken();
@@ -52,6 +52,8 @@ router.post("/user/login", async (req, res) => {
       token
     });
   } catch (e) {
+    console.log(JSON.parse(e.message));
+    console.log("error console mai aa ya m");
     res.status(400).send(e);
   }
 });
@@ -64,7 +66,7 @@ router.get("/user/me", auth, (req, res) => {
 router.get("/user/auth", auth, (req, res) => {
   console.log("req on auth route");
   let today = new Date();
-  let dd = String(today.getDate());
+  let dd = today.getDate();
   console.log(dd);
   res.status(200).send({ sucess: 1, day: dd, data: req.user.messcard });
 });

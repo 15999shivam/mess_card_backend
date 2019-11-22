@@ -47,13 +47,14 @@ const UserSchema = mongoose.Schema({
 
 // Function for findig user in DB with username password
 UserSchema.statics.findByCredentials = async (username, password) => {
-  const user = find({ username });
+  const user = await User.findOne({ username });
+
   if (!user) {
-    throw Error({ error: 1 });
+    throw Error(JSON.stringify({ error: 1 }));
   }
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    throw Error({ error: 2 });
+    throw Error(JSON.stringify({ error: 2 }));
   }
   return user;
 };
