@@ -99,4 +99,18 @@ router.post("/user/checkbox", auth, async (req, res) => {
   res.send({ sucess: 1 });
 });
 
+//Chnage Password
+router.post("/user/changepassword", auth, async (req, res) => {
+  console.log("change password");
+  let isMatch = await req.user.checkPassword(req.body.oldpassword);
+  console.log(isMatch);
+  if (isMatch) {
+    req.user.password = req.body.newpassword;
+    await req.user.save();
+    res.send({ sucess: 1 });
+  } else {
+    res.status(401).send({ error: 4 }); //this should be server error
+  }
+});
+
 module.exports = router;

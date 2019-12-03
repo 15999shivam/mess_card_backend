@@ -70,7 +70,12 @@ UserSchema.methods.generateAuthToken = async function() {
   await user.save();
   return token;
 };
-
+UserSchema.methods.checkPassword = async function(password) {
+  const user = this;
+  // console.log("hiii");
+  const isMatch = await bcrypt.compare(password, user.password);
+  return isMatch;
+};
 //overwriting toJson function for for removing password before send it over to client.
 UserSchema.methods.toJSON = function() {
   const user = this;

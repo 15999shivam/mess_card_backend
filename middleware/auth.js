@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../modals/User");
 const auth = async (req, res, next) => {
   // console.log(req.body);
-  console.log(req.header("Authorization"));
+  console.log(req.body);
   try {
     let token = req.header("Authorization").replace("Bearer ", "");
 
