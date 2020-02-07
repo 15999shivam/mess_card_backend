@@ -12,6 +12,8 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+const port = process.env.PORT;
+
 new CronJob(
   "0 0 0 1 * *",
   async function() {
@@ -34,6 +36,6 @@ new CronJob(
   "America/Los_Angeles"
 );
 
-app.listen(3000, (err, cb) => {
+app.listen(port, (err, cb) => {
   console.log("App Running On 3000");
 });
