@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 new CronJob(
   "0 0 0 1 * *",
